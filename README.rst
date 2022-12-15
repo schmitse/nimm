@@ -19,3 +19,5 @@ How to play the game? Create a Board, Player, and a Game instance and play :) ::
 
   game = nimm.game.Game(p1=p1, p2=p2, board=board)
   game.play()
+
+Or use the `Play.py` script for inspiration. 
