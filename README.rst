@@ -21,3 +21,10 @@ How to play the game? Create a Board, Player, and a Game instance and play :) ::
   game.play()
 
 Or use the `Play.py` script for inspiration. 
+
+====
+
+Pre-commit setup ::
+
+  python -m pip install pre-commit
+  pre-commit install
