@@ -1,3 +1,4 @@
+import os
 import itertools
 import tkinter as tk
 from PIL import Image, ImageTk
@@ -99,7 +100,8 @@ class NimmGUI(tk.Frame):
 
         self._buttons = []
         self._images = []
-        files = glob(r'src/nimm/backgrounds/*jpg')
+        _td = os.path.dirname(os.path.realpath(__file__))
+        files = glob(f'{_td}/../backgrounds/*jpg')
         for ff in files:
             image = Image.open(ff)
             image = image.resize((msize, int(msize * 1.5)))
