@@ -9,7 +9,14 @@ Install dependencies with ::
 
 ====
 
-How to play the game? Create a Board, Player, and a Game instance and play :) ::
+How to play the game?
+
+Use the GUI (currently only human 1v1 supported) ::
+
+  import nimm
+  nimm.game.play_1v1()
+
+Create a Board, Player, and a Game instance and play in the terminal :) ::
 
   import nimm
 
