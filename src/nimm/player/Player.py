@@ -75,8 +75,8 @@ class PlayerComputer:
     def _choose_move(self):
         """
         choose move based on sum of elements in rows.
-        objective is to obtain an even number of elements
-        in all rows with your move to generate a winning
+        objective is to obtain an even sum of binary elements
+        in all columns with your move to generate a winning
         position.
         If difficulty is easy, there is the possibility to
         throw in 'wrong' moves that generate a losing position. 
@@ -89,7 +89,7 @@ class PlayerComputer:
             binary_sum = np.array([self._binsum(val, self._pad) for val
                                    in _board._board.sum(axis=1)])
             xor_sum = binary_sum.sum(axis=0)
-            test_statistic = np.sum(xor_sum % 2) == 0
+            test_statistic = np.sum(xor_sum % 2) != 0
             if test_statistic:
                 good_moves.append(mv)
             else:
