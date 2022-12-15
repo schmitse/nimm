@@ -27,9 +27,13 @@ class PlayerHuman:
         self._turn = start
         self._board = board
         self._difficulty = difficulty
+        self._human = True
 
     def is_turn(self) -> bool:
         return self._board.turn() == self._turn
+
+    def is_human(self) -> bool:
+        return self._human
 
     def push(self) -> bool:
         if self.is_turn():
@@ -41,6 +45,16 @@ class PlayerHuman:
             self._board.push(row, col)
         else:
             print('Its not your turn to move!')
+        return True
+
+    def push_gui(self, mv: list) -> list:
+        """ push function for gui play """
+        if self.is_turn():
+            self._board.push(mv[0], (mv[1], mv[2]))
+            return mv
+        else:
+            print('Its not your turn to move!')
+            return []
 
 
 class PlayerComputer:
@@ -54,17 +68,26 @@ class PlayerComputer:
         self._board = board
         self._difficulty = difficulty
         self._pad = len(np.binary_repr(board._board.shape[1]))
+        self._human = False
+
+    def is_human(self) -> bool:
+        return self._human
 
     def is_turn(self) -> bool:
         return self._board.turn() == self._turn
 
-    def push(self) -> bool:
+    def push(self) -> list:
         if self.is_turn():
             mv = self._choose_move()
             print(f'Playing move: {mv}')
             self._board.push(mv[0], (mv[1], mv[2]))
+            return mv
         else:
             print('Its not your turn to move!')
+            return []
+
+    def push_gui(self) -> list:
+        return self.push()
 
     def _choose_move(self) -> list:
         """
