@@ -9,15 +9,13 @@ Install dependencies with ::
 
 ====
 
-How to play the game? Create a Board, Player, and a Game instance and play :)
+How to play the game? Create a Board, Player, and a Game instance and play :) ::
 
-```
-import nimm
+  import nimm
 
-board = nimm.board.Board()
-p1 = nimm.player.PlayerHuman(board)
-p2 = nimm.player.PlayerComputer(board, start=False)
+  board = nimm.board.Board()
+  p1 = nimm.player.PlayerHuman(board)
+  p2 = nimm.player.PlayerComputer(board, start=False)
 
-game = nimm.game.Game(p1=p1, p2=p2, board=board)
-game.play()
-```
+  game = nimm.game.Game(p1=p1, p2=p2, board=board)
+  game.play()
