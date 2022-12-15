@@ -7,7 +7,8 @@ Install dependencies with ::
 
   pip install -e $THIS_DIRECTORY/nimm
 
-====
+===
+
 How to play the game? Create a Board, Player, and a Game instance and play :) ::
 
   import nimm
