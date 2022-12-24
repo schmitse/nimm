@@ -1,1 +1,1 @@
-from .Game import Game, play_1v1
+from .Game import Game, play_1v1, play_gui

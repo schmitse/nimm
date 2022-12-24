@@ -1,3 +1,4 @@
+from time import sleep
 import numpy as np
 from ..board import Board
 
@@ -86,6 +87,7 @@ class PlayerComputer:
 
     def push(self) -> list:
         """ push a move chosen by the _choose_move function """
+        sleep(2)
         if self.is_turn():
             mv = self._choose_move()
             print(f'Playing move: {mv}')
@@ -95,7 +97,7 @@ class PlayerComputer:
             print('Its not your turn to move!')
             return []
 
-    def push_gui(self) -> list:
+    def push_gui(self, mv: list = []) -> list:
         """ push a move for the gui, same as regular push """
         return self.push()
 
