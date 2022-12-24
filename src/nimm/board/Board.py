@@ -16,10 +16,17 @@ class Board:
     Object to interact with when playing the game
     """
     def __init__(self, pos: np.ndarray = None, size: int = 4) -> None:
+        self.size = size
         self._moves = []
         self._board = _make_board(size) if pos is None else pos.copy()
         self._turn = True
         return None
+
+    def reset(self) -> None:
+        """ quick reset board to start """
+        self._moves = []
+        self._board = _make_board(self.size)
+        self._turn = True
 
     def push_mv(self, mv: list) -> bool:
         """ quick push fcn compatible with legal moves """
