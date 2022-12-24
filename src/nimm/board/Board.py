@@ -64,9 +64,9 @@ class Board:
         self._board[row, col[0]:col[1] + 1] = 0
         self._moves.append([row, col])
         self._turn = not self._turn
-        # if self.is_gameover():
-        #     print(f'Game Over!')
-        #     print(f'Winner is: {self.winner()}')
+        if self.is_gameover():
+            print('Game Over!')
+            print(f'Winner is: {self.winner()}')
         return True
 
     def get_legal_moves(self) -> list:
@@ -86,18 +86,22 @@ class Board:
         return mvs[msk]
 
     def winner(self) -> str:
+        """ return winner string if game is over """
         if self.is_gameover():
             return 'Player 1' if self._turn else 'Player 2'
         else:
             return 'Game not terminated yet!'
 
     def is_gameover(self) -> bool:
+        """ check if game is over """
         return np.sum(self._board) == 0
 
     def turn(self) -> bool:
+        """ check whose players turn it is """
         return self._turn
 
     def __repr__(self) -> str:
+        """ string representation for rendering board in terminal """
         _lst = [''.join([' X ' if self._board[i, j] else ' O '
                          for j in range(self._board.shape[1])])
                 for i in range(self._board.shape[0])]

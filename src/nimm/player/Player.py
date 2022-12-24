@@ -14,6 +14,7 @@ class Player:
         self._difficulty = difficulty
 
     def is_turn(self) -> bool:
+        """ check if its your turn """
         return self._board.turn() == self._turn
 
 
@@ -23,6 +24,7 @@ class PlayerHuman:
     """
     def __init__(self, board: Board, name: str = 'Humy',
                  start: bool = True, difficulty: int = 0) -> None:
+        """ init for the human player class for the nimm game """
         self._name = name
         self._turn = start
         self._board = board
@@ -30,12 +32,15 @@ class PlayerHuman:
         self._human = True
 
     def is_turn(self) -> bool:
+        """ check if its your turn """
         return self._board.turn() == self._turn
 
     def is_human(self) -> bool:
+        """ check if its a human player or not """
         return self._human
 
     def push(self) -> bool:
+        """ push a move on the board using input from terminal """
         if self.is_turn():
             mv = input('Enter Move as Row, [Start, Stop]: ')
             mv = mv.replace('[', '').replace(']', '').split(',')
@@ -63,6 +68,7 @@ class PlayerComputer:
     """
     def __init__(self, board: Board, name: str = 'Humy',
                  start: bool = True, difficulty: int = 0) -> None:
+        """ init for the computer nimm player """
         self._name = name
         self._turn = start
         self._board = board
@@ -71,12 +77,15 @@ class PlayerComputer:
         self._human = False
 
     def is_human(self) -> bool:
+        """ check if player is human or not """
         return self._human
 
     def is_turn(self) -> bool:
+        """ check if its your turn to play """
         return self._board.turn() == self._turn
 
     def push(self) -> list:
+        """ push a move chosen by the _choose_move function """
         if self.is_turn():
             mv = self._choose_move()
             print(f'Playing move: {mv}')
@@ -87,6 +96,7 @@ class PlayerComputer:
             return []
 
     def push_gui(self) -> list:
+        """ push a move for the gui, same as regular push """
         return self.push()
 
     def _choose_move(self) -> list:
